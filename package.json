@@ -1,0 +1,50 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "npm run development -- --watch",
+        "watch-poll": "npm run watch -- --watch-poll",
+        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "prod": "npm run production",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    },
+    "devDependencies": {
+        "@fortawesome/fontawesome-free": "^5.11.2",
+        "axios": "^0.19",
+        "bootstrap": "^4.3.1",
+        "cross-env": "^5.1",
+        "jquery": "^3.2",
+        "laravel-mix": "^4.0.7",
+        "lodash": "^4.17.13",
+        "nodemon": "^1.19.4",
+        "popper.js": "^1.12",
+        "resolve-url-loader": "^2.3.1",
+        "sass": "^1.20.1",
+        "sass-loader": "7.*",
+        "vue": "^2.5.17",
+        "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^1.2.25",
+        "@fortawesome/free-solid-svg-icons": "^5.11.2",
+        "@fortawesome/vue-fontawesome": "^0.1.8",
+        "coffee-script": "^1.12.7",
+        "datatables": "^1.10.18",
+        "fs": "0.0.1-security",
+        "jade": "^1.11.0",
+        "laravel-echo": "^1.6.1",
+        "laravel-vue-datatable": "^0.3.19",
+        "less": "^3.10.3",
+        "node-sass": "^4.13.0",
+        "numeral": "^2.0.6",
+        "pug": "^2.0.4",
+        "pusher-js": "^5.0.2",
+        "stylus": "^0.54.7",
+        "sweetalert2": "^9.1.5",
+        "vue-good-table": "^2.18.0",
+        "vue-sweetalert2": "^2.1.5",
+        "vueify": "^9.4.1",
+        "vuetify": "^2.1.9"
+    }
+}
