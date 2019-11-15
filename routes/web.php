@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/api/items','ItemController@apiFetch');
     Route::get('/api/cart','CartController@apiFetch');
     Route::post('/api/cart/add','CartController@apiAddToCart');
+    Route::post('/api/cart/update','CartController@apiUpdateCart');
 
     Route::get('/home', 'HomeController@index')->name('home');
         

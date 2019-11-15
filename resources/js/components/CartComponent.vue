@@ -15,7 +15,15 @@
                         <td v-text="item.name"></td>
                         <td v-text="toNumber(item.price)"></td>
                         <td> x </td>
-                        <td><input type="number" min="1" :max="item.i_qty" v-model="item.qty" @keyup.enter="onEnter(item)" :id="item.id" @change="change(item)"></td>
+                        <!-- <td><button>-</button><input type="number" min="1" :max="item.i_qty" v-model="item.qty" @keyup.enter="onEnter(item)" :id="item.id" @keydown="change(item)"><button>+</button></td> -->
+                        <!-- <td><button class="btn-crement btn-default">-</button> <span class="item_quantity"><b>{{ item.qty }}</b></span><button class="btn-crement btn-default">+</button></td> -->
+                        <td>
+                            <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                            <button type="button" class="btn btn-secondary" @click="decrement(item)">-</button>
+                            <button type="button" class="btn btn-secondary" disabled>{{ item.qty }}</button>
+                            <button type="button" class="btn btn-secondary" @click="increment(item)">+</button>
+                            </div>
+                        </td>
                         <td><b>{{ toNumber(item.total) }}</b></td>
                     </tr>
                 <tr>
@@ -57,18 +65,61 @@ export default {
     },
     methods: {
         onEnter(item){
-            axios.post('/api/cart/add',
+            this.showLoader()
+            axios.post('/api/cart/update',
                 {
                     item_id:item.item_id,
                     qty:item.qty
                 })
                 .then((res)=>{
                     console.log(res.msg);
+                    this.hideLoader();
                 })
         },
-        change(data){
-            console.log(data.name)
-        
+        showLoader(){
+            this.loader = this.$loading.show({
+                // Optional parameters
+                container: this.fullPage ? null : this.$refs.formContainer,
+                canCancel: true,
+                onCancel: this.onCancel,
+            });
+        },
+        hideLoader(){
+            this.loader.hide()
+        },
+        increment(item){
+            this.showLoader();
+            item.qty = item.qty + 1
+            axios.post('api/cart/update',{
+                item_id:item.item_id,
+                qty:item.qty
+            })
+            .then((res)=>{
+                this.cart = res.data
+                this.hideLoader();
+            })
+        },
+        decrement(item){
+            this.showLoader();
+            item.qty = item.qty - 1
+            axios.post('api/cart/update',{
+                item_id:item.item_id,
+                qty:item.qty
+            })
+            .then((res)=>{
+                this.cart = res.data
+                this.hideLoader();
+            })
+        },
+        change(item){
+            // axios.post('/api/cart/update',
+            //     {
+            //         item_id:item.item_id,
+            //         qty:item.qty
+            //     })
+            //     .then((res)=>{
+            //         console.log(res.msg);
+            // })
         },
         test(){
             alert('from cartcomponent')
@@ -95,8 +146,26 @@ export default {
     },
     data(){
         return{
+            loader: '',
             cart: [],
         }
     }
 }
 </script>
+
+
+<style scoped>
+
+.btn-crement{
+    padding-left: 20px;
+    padding-right: 20px;
+    border-color:gray;
+    background-color: white;
+    border-radius: 0.5em;
+
+}
+.item_quantity{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+</style>

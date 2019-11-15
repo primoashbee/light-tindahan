@@ -6,11 +6,14 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faVectorSquare,faCartPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import Loading from 'vue-loading-overlay';
+
 library.add(faVectorSquare,faCartPlus)
 require('./bootstrap');
 
 window.Vue = require('vue');
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.use(Loading);
 
 //Vue.use(DataTable);
 //Vue.use(VueSweetalert2);

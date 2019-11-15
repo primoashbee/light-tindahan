@@ -34,6 +34,7 @@ class CartController extends Controller
         $response = array(['code'=>200,'msg'=>'Updated']);
 
         event(new AddedToCart($cart));
+        $response = $this->apiFetch();
         return json_encode($response);
 
     }
@@ -57,7 +58,8 @@ class CartController extends Controller
         }
         $response = array(['code'=>200,'msg'=>'Updated']);
 
-        event(new AddedToCart($cart));
+        //event(new AddedToCart($cart));
+        $response = $this->apiFetch();
         return json_encode($response);
 
     }

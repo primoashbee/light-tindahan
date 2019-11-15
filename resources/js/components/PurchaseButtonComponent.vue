@@ -107,7 +107,7 @@ import Swal from 'sweetalert2';
                             item_id:item.id,
                             qty:qty
                         })
-                        .then(
+                        .then((res)=>{
                                 Swal.fire({
                                 title: 'Successfully Added to Cart',
                                 width: 600,
@@ -120,8 +120,9 @@ import Swal from 'sweetalert2';
                                     no-repeat
                                 `
                                 })
-                        )
-                        //this.cart.push({item:item,qty:qty})
+                        this.cart = res.data
+                        })
+                        
                     }     
             }
         },

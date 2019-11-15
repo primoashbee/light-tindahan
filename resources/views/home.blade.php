@@ -11,7 +11,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
                     <purchase-button></purchase-button>
                     <user-purchases></user-purchases>
                 </div>
