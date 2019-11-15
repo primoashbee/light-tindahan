@@ -3,18 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Test Title</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <h1>What's niggas</h1>
-    <h1>What's niggas</h1>
-    <h1>What's niggas</h1>
-    <h1>What's niggas</h1>
-    <h1>What's niggas</h1>
-    <h1>What's niggas</h1>
-    <h1>What's niggas</h1>
-    <h1>What's niggas</h1>
-    <h1>What's niggas</h1>
-    <h1>What's niggas</h1>
-    <h1>What's niggas</h1>
+    <div id="app" class="container">
+    
+        <table class="table-striped">
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>E-mail</th>
+            </thead>
+        </table>
+        <button class="btn btn-success" @click="generateData">Generate Data</button>
+    </div>
 </body>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js" integrity="sha256-XmdRbTre/3RulhYk/cOBUMpYlaAp2Rpo/s556u0OIKk=" crossorigin="anonymous"></script>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        mounted(){
+            alert('hahaha')
+        },
+        methods: {
+            generateData(){
+                fetch('/https://jsonplaceholder.typicode.com/users')
+                .then((res)=>{
+                    this.users = res.data
+                    console.log(res.data)
+                })
+            }
+        },
+        data: {
+            users: []
+        }
+    })
+</script>
+
 </html>
