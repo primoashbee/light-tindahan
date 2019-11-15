@@ -37,9 +37,7 @@
             generateData(){
                 fetch('//jsonplaceholder.typicode.com/users')
                 .then((res)=>{
-                    this.users = res.data
-                    console.log(res.data)
-                    console.log(res)
+                    this.users = res
                 })
             }
         },
